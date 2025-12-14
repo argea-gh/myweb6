@@ -412,6 +412,30 @@ function renderFeaturedProducts() {
 document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
   renderFeaturedProducts();
+  // Mobile cart button
+const mobileCartBtn = document.getElementById('mobileCartBtn');
+const mobileCartCount = document.getElementById('mobileCartCount');
+
+function updateMobileCartCount() {
+  const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+  mobileCartCount.textContent = totalCount || '';
+  mobileCartCount.style.display = totalCount > 0 ? 'block' : 'none';
+}
+
+if (mobileCartBtn) {
+  mobileCartBtn.addEventListener('click', () => {
+    // Buka modal keranjang sederhana, atau redirect ke /product dengan anchor #cart
+    alert('Fitur keranjang mobile sedang dikembangkan. Sementara, pesan via WhatsApp ya!');
+    // Atau: window.location.href = 'product/index.html#cart';
+  });
+}
+
+// Update saat load & perubahan
+document.addEventListener('DOMContentLoaded', updateMobileCartCount);
+window.updateCartUI = function() {
+  // ... kode lama ...
+  updateMobileCartCount(); // tambahkan ini
+};
 
   // Hero Carousel (Auto)
   let currentSlide = 0;
