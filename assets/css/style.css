@@ -93,6 +93,21 @@ ul {
   color: var(--white);
 }
 
+/* Tombol putih dengan font hijau */
+.btn-outline-white {
+  background: white;
+  color: var(--primary);
+  border: 2px solid white;
+  font-weight: 600;
+}
+.btn-outline-white:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
 .btn-block {
   display: block;
   width: 100%;
@@ -179,8 +194,8 @@ ul {
 
 /* ===== HEADER ===== */
 .header {
-  background-color: #E8F5E9; /* Hijau lembut (light green #E8F5E9 = material "green 50") */
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  background-color: #E8F5E9; /* Hijau lembut */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -217,7 +232,7 @@ ul {
   font-weight: 500;
   position: relative;
   padding: 8px 0;
-  color: var(--dark); /* teks gelap agar kontras di latar hijau muda */
+  color: var(--dark);
 }
 
 .nav-link.active,
@@ -295,7 +310,11 @@ ul {
   transition: opacity 1s ease;
 }
 
-/* Konten di atas gambar, tidak mengganggu proporsi */
+.hero-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
 .hero-slide-content {
   position: absolute;
   top: 0;
@@ -306,21 +325,6 @@ ul {
   flex-direction: column;
   justify-content: center;
   padding: 0 20px;
-}
-
-.hero-slide.active {
-  opacity: 1;
-  z-index: 1;
-}
-
-.hero-slide::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.4);
 }
 
 .hero-content {
@@ -346,6 +350,7 @@ ul {
 .hero-buttons {
   display: flex;
   gap: 16px;
+  justify-content: center;
 }
 
 .hero-dots {
@@ -369,21 +374,6 @@ ul {
 .dot.active {
   background-color: var(--white);
   transform: scale(1.2);
-}
-
-/* Tombol "Hubungi Kami" putih dengan font hijau */
-.btn-outline-white {
-  background: white;
-  color: var(--primary);
-  border: 2px solid white;
-  font-weight: 600;
-}
-.btn-outline-white:hover {
-  background: var(--primary);
-  color: white;
-  border-color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
 }
 
 /* ===== PROBLEMS ===== */
@@ -421,25 +411,14 @@ ul {
 /* ===== PRODUCTS ===== */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
-/* Untuk tablet & mobile */
-@media (max-width: 1024px) {
-  .featured.products-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-@media (max-width: 768px) {
-  .featured.products-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width: 480px) {
-  .featured.products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* Featured: 6 kolom di desktop */
+.featured.products-grid {
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
 }
 
 .product-card {
@@ -455,11 +434,10 @@ ul {
   box-shadow: 0 12px 24px rgba(46, 125, 50, 0.15);
 }
 
-/* Gambar produk dalam card — full width & tinggi tetap, tanpa crop */
 .product-image {
   width: 100%;
-  height: 160px; /* tetap, tapi object-fit: contain */
-  object-fit: contain; /* <-- ini kunci: jaga proporsi, tidak terpotong */
+  height: 160px;
+  object-fit: contain; /* JANGAN GANTI! ini kunci agar gambar tidak terpotong */
   padding: 12px;
   background-color: #f9f9f9;
 }
@@ -469,22 +447,25 @@ ul {
 }
 
 .product-title {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin-bottom: 8px;
   color: var(--primary);
 }
 
 .product-desc {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--gray);
   margin-bottom: 12px;
+  min-height: 48px;
 }
 
+/* HARGA DI CARD PRODUK — Diperbesar, bold, hijau */
 .product-price {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 16px;
+  font-size: 1.6rem;     /* besar */
+  font-weight: 800;      /* extra bold */
+  color: var(--primary); /* hijau brand */
+  margin: 12px 0;
+  line-height: 1.2;
 }
 
 .badge {
@@ -500,52 +481,25 @@ ul {
 
 .product-actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .btn-sm {
-  padding: 8px 16px;
-  font-size: 14px;
+  padding: 8px 12px;
+  font-size: 13px;
 }
 
-.featured .product-card {
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-/* ===== TESTIMONIALS ===== */
+/* ===== TESTIMONIALS — 5 kolom ===== */
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
 }
 
-/* Responsif */
-@media (max-width: 1200px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-@media (max-width: 900px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width: 600px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 480px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .testimonial-card {
   background: var(--white);
   border-radius: 12px;
-  padding: 24px;
+  padding: 20px;
   box-shadow: var(--shadow);
 }
 
@@ -567,13 +521,15 @@ ul {
 
 .testimonial-rating {
   color: #FFD700;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
 }
 
 .testimonial-name {
   font-weight: 600;
   color: var(--primary);
-  margin-top: 8px;
+  margin-top: 6px;
+  font-size: 0.95rem;
 }
 
 /* ===== BLOG ===== */
@@ -708,40 +664,24 @@ ul {
   color: var(--primary);
 }
 
-/* ===== HARGA DI MODAL DETAIL PRODUK ===== */
+/* HARGA DI MODAL — SANGAT BESAR, BOLD, HIJAU */
 .modal-product-price {
   margin: 24px 0;
   padding: 16px 0;
   border-top: 1px dashed #eee;
   border-bottom: 1px dashed #eee;
+  text-align: center;
 }
 
 .price {
-  font-size: 2.2rem;        /* Diperbesar → lebih dominan */
-  font-weight: 800;         /* Extra bold */
-  color: var(--primary);    /* Hijau brand (#2E7D32) */
+  font-size: 2.2rem;        /* besar sekali */
+  font-weight: 800;         /* extra bold */
+  color: var(--primary);    /* hijau */
   display: block;
-  text-align: center;
   letter-spacing: -0.5px;
   line-height: 1.1;
-  /* efek muncul perlahan */
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInUp 0.6s ease forwards 0.2s;
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-/* Untuk mobile: sedikit lebih kecil tapi tetap besar */
-@media (max-width: 768px) {
-  .price {
-    font-size: 1.8rem;
-  }
-    }
 .modal-actions {
   margin-top: 24px;
   display: flex;
@@ -898,102 +838,63 @@ ul {
   visibility: visible;
 }
 
-/* ===== CART SIDEBAR (MOBILE) ===== */
-.cart-sidebar {
+/* ===== MOBILE CART BUTTON ===== */
+.mobile-cart-btn {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: var(--white);
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
-  z-index: 1001;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-.cart-sidebar.show {
-  transform: translateY(0);
-}
-
-.cart-header {
+  bottom: 16px;
+  right: 16px;
+  width: 56px;
+  height: 56px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 16px 20px;
-  border-bottom: 1px solid #eee;
-  font-weight: 600;
-}
-
-.close-cart {
-  font-size: 24px;
+  box-shadow: 0 4px 12px rgba(46,125,50,0.4);
+  z-index: 99;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
   cursor: pointer;
 }
 
-.cart-items {
-  padding: 20px;
-}
-
-.cart-item {
-  display: grid;
-  grid-template-columns: 60px 1fr auto;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.cart-item-img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.cart-item-info h4 {
-  font-size: 1rem;
-  margin-bottom: 4px;
-}
-
-.cart-item-qty {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.qty-btn {
-  width: 28px;
-  height: 28px;
-  border: 1px solid #ddd;
+.mobile-cart-btn span {
+  position: absolute;
+  top: -6px;
+  right: -6px;
   background: white;
-  cursor: pointer;
+  color: var(--primary);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
   font-weight: bold;
 }
 
-.cart-total {
-  padding: 16px 20px;
-  font-size: 1.2rem;
-  font-weight: 700;
-  border-top: 2px solid #eee;
-}
-
-.cart-actions {
-  padding: 0 20px 20px;
-}
-
-/* ===== ANIMATIONS ===== */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-in.appear {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .featured.products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.2rem;
@@ -1003,13 +904,14 @@ ul {
   }
   .hero-buttons {
     flex-direction: column;
+    gap: 12px;
   }
   .nav-menu {
     position: fixed;
     top: 70px;
     left: 0;
     width: 100%;
-    background: var(--white);
+    background: #E8F5E9;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     padding: 20px;
     transform: translateY(-150%);
@@ -1040,12 +942,9 @@ ul {
   .blog-grid {
     grid-template-columns: 1fr;
   }
-
-  /* Header tetap, keranjang kini floating di kanan atas */
-  .header-content {
-    padding: 12px 16px;
+  .price {
+    font-size: 1.8rem;
   }
-
   .cart-icon {
     position: fixed;
     top: 16px;
@@ -1060,51 +959,18 @@ ul {
     align-items: center;
     box-shadow: 0 2px 8px rgba(46,125,50,0.3);
   }
+}
 
-  .cart-badge {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    width: 20px;
-    height: 20px;
-    font-size: 11px;
+@media (max-width: 600px) {
+  .featured.products-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
-
-  /* Sembunyikan sidebar keranjang default (karena kini pakai modal/mobile-friendly) */
-  .cart-sidebar {
-    display: none;
-  }
-
-  /* Tambahkan tombol keranjang kecil di bawah header (opsional — jika ingin tetap ada akses cepat) */
-  .mobile-cart-btn {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    width: 56px;
-    height: 56px;
-    background: var(--primary);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 12px rgba(46,125,50,0.4);
-    z-index: 99;
-    font-size: 12px;
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
-  .product-image {
-    height: 140px;
-    padding: 8px;
-  }
-  
-  .product-info {
-    padding: 16px 12px;
-  }
-
   .section {
     padding: 60px 0;
   }
@@ -1112,16 +978,32 @@ ul {
     font-size: 1.8rem;
   }
   .hero-content {
-    padding: 0 20px;
+    padding: 0 16px;
   }
   .hero-title {
     font-size: 1.8rem;
   }
-  .hero-buttons {
-    gap: 10px;
-  }
   .btn {
     padding: 10px 20px;
     font-size: 14px;
+  }
+  .featured.products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  .product-image {
+    height: 140px;
+    padding: 8px;
+  }
+  .product-info {
+    padding: 16px 12px;
+  }
+  .product-title {
+    font-size: 1.1rem;
+  }
+  .product-price {
+    font-size: 1.4rem;
   }
 }
