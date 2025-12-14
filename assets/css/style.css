@@ -83,19 +83,14 @@ ul {
   color: var(--white);
 }
 
-/* ✅ Tombol putih dengan font hijau */
-.btn-outline-white {
-  background: white;
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary);
   color: var(--primary);
-  border: 2px solid white;
-  font-weight: 600;
 }
-.btn-outline-white:hover {
-  background: var(--primary);
-  color: white;
-  border-color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
+.btn-outline:hover {
+  background-color: var(--primary);
+  color: var(--white);
 }
 
 .btn-block {
@@ -184,7 +179,7 @@ ul {
 
 /* ===== HEADER ===== */
 .header {
-  background-color: #E8F5E9; /* ✅ Hijau lembut (Material Green 50) */
+  background-color: var(--white);
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   position: sticky;
   top: 0;
@@ -316,15 +311,12 @@ ul {
   background: rgba(0,0,0,0.4);
 }
 
-/* ✅ Hero content: agar tidak terpotong & gambar tetap utuh */
 .hero-content {
   position: relative;
-  max-width: 700px;
+  max-width: 600px;
   padding: 0 40px;
   color: var(--white);
   z-index: 2;
-  text-align: center; /* ✅ agar teks & tombol sejajar tengah */
-  margin: 0 auto;
 }
 
 .hero-title {
@@ -402,25 +394,8 @@ ul {
 /* ===== PRODUCTS ===== */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 16px;
-}
-
-/* Responsif */
-@media (max-width: 1024px) {
-  .products-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-@media (max-width: 768px) {
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width: 480px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 
 .product-card {
@@ -436,13 +411,10 @@ ul {
   box-shadow: 0 12px 24px rgba(46, 125, 50, 0.15);
 }
 
-/* ✅ Gambar produk: tidak terpotong, tetap proporsional */
 .product-image {
   width: 100%;
-  height: 160px;
-  object-fit: contain; /* ✅ KUNCI: jaga rasio, tidak crop */
-  padding: 12px;
-  background-color: #f9f9f9;
+  height: 200px;
+  object-fit: cover;
 }
 
 .product-info {
@@ -497,30 +469,8 @@ ul {
 /* ===== TESTIMONIALS ===== */
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
-}
-
-/* Responsif */
-@media (max-width: 1200px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-@media (max-width: 900px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width: 600px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 480px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 .testimonial-card {
@@ -687,24 +637,6 @@ ul {
   font-size: 1.3rem;
   margin: 20px 0 10px;
   color: var(--primary);
-}
-
-/* ===== MODAL — ✅ Harga di modal besar, bold, hijau ===== */
-/* Tambahkan blok ini di bawah bagian `.modal-product-details` */
-.modal-product-price {
-  margin: 24px 0;
-  padding: 16px 0;
-  border-top: 1px dashed #eee;
-  border-bottom: 1px dashed #eee;
-  text-align: center;
-}
-
-.price {
-  font-size: 2.2rem;     /* ✅ besar */
-  font-weight: 800;      /* ✅ extra bold */
-  color: var(--primary); /* ✅ hijau */
-  display: block;
-  line-height: 1.1;
 }
 
 .modal-actions {
@@ -945,32 +877,6 @@ ul {
 .cart-actions {
   padding: 0 20px 20px;
 }
-
-/* ===== MOBILE — ✅ Keranjang sticky kanan atas ===== */
-@media (max-width: 768px) {
-  .cart-icon {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 1001;
-    background: var(--primary);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 8px rgba(46,125,50,0.3);
-  }
-
-  .cart-badge {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    width: 20px;
-    height: 20px;
-    font-size: 11px;
-  }
 
 /* ===== ANIMATIONS ===== */
 .fade-in {
