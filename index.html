@@ -61,6 +61,7 @@
     <div class="hero-carousel" id="heroCarousel">
       <!-- Slide 1 -->
       <div class="hero-slide active" style="background-image: url('https://hni.net/public/front/img/produk/MADU%20PAHIT-1_04-01-19_.png')">
+       <div class="hero-slide-content">
         <div class="hero-content">
           <h1 class="hero-title">Madu Pahit — Penjaga Imun Alami</h1>
           <p class="hero-subtitle">Kaya flavonoid & antioksidan. Bantu tubuh lawan radikal bebas setiap hari.</p>
@@ -69,10 +70,12 @@
             <a href="https://wa.me/6282241900467?text=Halo%20Herbaprima%2C%20saya%20tertarik%20dengan%20Madu%20Pahit." class="btn btn-outline" target="_blank">Hubungi Kami</a>
           </div>
         </div>
+       </div>
       </div>
       <!-- Slide 2 -->
       <div class="hero-slide" style="background-image: url('https://hni.net/public/front/img/produk/CENTELLA-1_04-01-19_.png')">
-        <div class="hero-content">
+        <div class="hero-slide-content">
+         <div class="hero-content">
           <h1 class="hero-title">Centella Teh Sinergi — Detoks Harian</h1>
           <p class="hero-subtitle">Rasakan ringan & segar dalam 7 hari. Tanpa kafein, 100% herbal.</p>
           <div class="hero-buttons">
@@ -80,9 +83,11 @@
             <a href="https://wa.me/6282241900467?text=Halo%20Herbaprima%2C%20saya%20ingin%20coba%20Centella%20Teh%20Sinergi." class="btn btn-outline" target="_blank">Hubungi Kami</a>
           </div>
         </div>
+       </div>
       </div>
       <!-- Slide 3 -->
       <div class="hero-slide" style="background-image: url('https://hni.net/public/front/img/produk/deep-olive-0625_16-06-25_.png')">
+       <div class="hero-slide-content">
         <div class="hero-content">
           <h1 class="hero-title">Deep Olive — Minyak Herba Premium</h1>
           <p class="hero-subtitle">Pereda nyeri alami. Cocok untuk rematik, pegal, dan kesehatan kulit.</p>
@@ -91,9 +96,11 @@
             <a href="https://wa.me/6282241900467?text=Halo%20Herbaprima%2C%20saya%20ingin%20tahu%20lebih%20tentang%20Deep%20Olive." class="btn btn-outline" target="_blank">Hubungi Kami</a>
           </div>
         </div>
+       </div>
       </div>
       <!-- Slide 4 -->
       <div class="hero-slide" style="background-image: url('https://hni.net/public/front/img/produk/egm-topbrand_14-11-24_.png')">
+       <div class="hero-slide-content">
         <div class="hero-content">
           <h1 class="hero-title">Etta Goat Milk — Susu Kambing Premium</h1>
           <p class="hero-subtitle">Tinggi kalsium & probiotik. Aman untuk anak & lansia. Tanpa pengawet.</p>
@@ -103,6 +110,7 @@
           </div>
         </div>
       </div>
+     </div>
     </div>
     <div class="hero-dots" id="heroDots">
       <span class="dot active" data-slide="0"></span>
@@ -381,7 +389,16 @@
       <a id="checkoutWA" href="#" class="btn btn-primary btn-block">Checkout via WhatsApp</a>
     </div>
   </div>
-
+  
+<!-- Mobile Cart Button (floating bottom-right) -->
+<button class="mobile-cart-btn" id="mobileCartBtn">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="9" cy="21" r="1"></circle>
+    <circle cx="20" cy="21" r="1"></circle>
+    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+  </svg>
+  <span id="mobileCartCount">0</span>
+</button>
   <!-- Scripts -->
   <script src="assets/js/app.js"></script>
 </body>
