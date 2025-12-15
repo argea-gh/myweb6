@@ -392,11 +392,55 @@ ul {
 }
 
 /* ===== PRODUCTS ===== */
+/* ================ PRODUK GRID — 6 KOLOM DI DESKTOP ================ */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
 }
+
+/* Desktop besar (≥1200px): 6 kolom */
+@media (min-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Desktop (992px–1199px): 5 kolom */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .products-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Tablet besar (768px–991px): 4 kolom */
+@media (min-width: 768px) and (max-width: 991px) {
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Tablet kecil / mobile landscape (576px–767px): 3 kolom */
+@media (min-width: 576px) and (max-width: 767px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile portrait (<576px): 2 kolom */
+@media (max-width: 575px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Sangat kecil (misal: iPhone SE): 1 kolom */
+@media (max-width: 375px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Penyesuaian ukuran kartu untuk 6 kolom */
 
 .product-card {
   background: var(--white);
@@ -406,23 +450,38 @@ ul {
   transition: var(--transition);
 }
 
+@media (min-width: 1200px) {
+  .product-card {
+    min-width: 160px;
+  }
+}
+
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 24px rgba(46, 125, 50, 0.15);
 }
 
 .product-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: 160px; /* ↓ dari 200px */
+  background-color: var(--gray-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px; /* ↓ dari 20px */
+}
+
+.product-image img {
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .product-info {
-  padding: 20px;
+  padding: 16px; /* ↓ dari 20px */
 }
 
 .product-title {
-  font-size: 1.3rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   margin-bottom: 8px;
   color: var(--primary);
 }
@@ -431,10 +490,12 @@ ul {
   font-size: 0.95rem;
   color: var(--gray);
   margin-bottom: 12px;
+  min-height: 36px;
+  line-height: 1.4;
 }
 
 .product-price {
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--primary);
   margin-bottom: 16px;
@@ -442,10 +503,10 @@ ul {
 
 .badge {
   display: inline-block;
-  padding: 4px 10px;
-  background-color: var(--accent);
+  padding: 3px 6px;
+  background-color: #ff6b35;
   color: var(--primary-dark);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 600;
   border-radius: 20px;
   margin-bottom: 12px;
@@ -453,7 +514,8 @@ ul {
 
 .product-actions {
   display: flex;
-  gap: 10px;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
 .btn-sm {
